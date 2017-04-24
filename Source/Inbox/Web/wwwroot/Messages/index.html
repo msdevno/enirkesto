@@ -17,7 +17,7 @@
                 <li class="active"><a href="#"><i class="fa fa-inbox"></i> Inbox
                   <span class="label label-primary pull-right">12</span></a></li>
 
-                  <!--
+                <!--
                 <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
                 <li><a href="#"><i class="fa fa-file-text-o"></i> Drafts</a></li>
                 <li><a href="#"><i class="fa fa-filter"></i> Junk <span class="label label-warning pull-right">65</span></a>
@@ -40,7 +40,7 @@
         </div>
         <div class="box-body no-padding">
             <ul class="nav nav-pills nav-stacked" data-bind="foreach: tags">
-                <li><a href="#"><i class="fa fa-circle-o text-red"></i> Important</a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-red"></i><span data-bind="text: $data"></span> </a></li>
                 <!--
                 <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Promotions</a></li>
                 <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> Social</a></li>-->
@@ -66,8 +66,13 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body no-padding">
+
             <div class="mailbox-controls">
-                <!-- Check all button -->
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                </div>
+
+                <!--
                 <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
                 </button>
                 <div class="btn-group">
@@ -75,7 +80,6 @@
                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
                 </div>
-                <!-- /.btn-group -->
                 <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
                 <div class="pull-right">
                     1-50/200
@@ -83,22 +87,37 @@
                         <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
                         <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
                     </div>
-                    <!-- /.btn-group -->
-                </div>
-                <!-- /.pull-right -->
+                </div>-->
             </div>
+
             <div class="table-responsive mailbox-messages">
                 <table class="table table-hover table-striped">
                     <tbody data-bind="foreach: messages">
                         <tr>
                             <td><input type="checkbox"></td>
-                            <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                            <!--<td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>-->
+                            <td>
+                                <button type="button" class="btn btn-default btn-xs" data-toggle="dropdown" aria-expanded="false">
+                                    Tag
+                                    <span class="fa fa-caret-down"></span>
+                                </button>
+                                <ul class="dropdown-menu" data-bind="foreach: $root.tags">
+                                    <li><a href="#" data-bind="text: $data">Action</a></li>
+                                </ul>
+                            </td>
+                            <td class="mailbox-star">
+                                <a href="#">
+                                    <i data-bind="css: { 'fa-star': starred, 'fa-star-o': !starred }" class="fa text-yellow"></i>
+                                </a>
+                            </td>
                             <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
                             <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
                             </td>
-                            <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                            <td class="mailbox-date">5 mins ago</td>
+                            <td class="mailbox-attachment">
+                                <!-- ko if: hasAttachment -->
+                                <i class="fa fa-paperclip"></i>
+                                <!-- /ko -->
+                            </td>
+                            <td class="mailbox-date" data-bind="text: when"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -106,10 +125,10 @@
             </div>
             <!-- /.mail-box-messages -->
         </div>
-        <!-- /.box-body -->
+
+        <!--
         <div class="box-footer no-padding">
             <div class="mailbox-controls">
-                <!-- Check all button -->
                 <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
                 </button>
                 <div class="btn-group">
@@ -117,7 +136,6 @@
                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
                 </div>
-                <!-- /.btn-group -->
                 <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
                 <div class="pull-right">
                     1-50/200
@@ -125,12 +143,9 @@
                         <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
                         <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
                     </div>
-                    <!-- /.btn-group -->
                 </div>
-                <!-- /.pull-right -->
             </div>
         </div>
+        -->
     </div>
-    <!-- /. box -->
 </div>
-<!-- /.col -->
