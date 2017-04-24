@@ -5,10 +5,10 @@ namespace Events.Messages
 {
     public class MessageReceived : Event
     {
-        public MessageReceived(EventSourceId inbox) : base(eventSourceId) {}
+        public MessageReceived(EventSourceId inbox) : base(inbox) {}
 
         public Guid MessageId { get; set; }
-        public string From { get; set; }
+        public string Sender { get; set; }
         public string Subject { get; set; }
         public string Body { get; set; }
     }
