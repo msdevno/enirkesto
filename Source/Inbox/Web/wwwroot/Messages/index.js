@@ -1,4 +1,4 @@
-Bifrost.namespace("Web.Inbox", {
+Bifrost.namespace("Web.Messages", {
     index: Bifrost.views.ViewModel.extend(function() {
         this.messages = ko.observableArray([
             {
