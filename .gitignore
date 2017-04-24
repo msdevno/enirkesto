@@ -35,3 +35,18 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+yarn.lock
+
+models
+
+# C# / .NET
+bin
+obj
+*.suo
+_ReSharper.*
+*.pdb
+*.idb
+*.pidb
+*.userprefs
+*.nupkg
