@@ -16,6 +16,8 @@ namespace Web
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddRouting();
+            services.AddBifrost();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -28,10 +30,17 @@ namespace Web
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(async (context) =>
+            app.UseDefaultFiles();
+
+            app.UseStaticFiles(new StaticFileOptions()
             {
-                await context.Response.WriteAsync("Hello World!");
+                OnPrepareResponse = context =>
+                {
+                    context.Context.Response.Headers.Add("Cache-Control", "no-cache, no-store");
+                    context.Context.Response.Headers.Add("Expires", "-1");
+                },
             });
+            app.UseBifrost(env);
         }
     }
 }
