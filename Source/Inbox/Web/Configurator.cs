@@ -36,7 +36,8 @@ namespace Web
                     .UsingJson()
 
                 .DefaultStorage
-                    .UsingFiles(entitiesPath)
+                    .UsingMongoDB(e => e.WithUrl("mongodb://localhost:27017").WithDefaultDatabase("inboxes"))
+                    //.UsingFiles(entitiesPath)
 
                 .Frontend
                     .Web(w =>
@@ -58,8 +59,10 @@ namespace Web
                         w.PathsToNamespaces.Add("/**/", @namespace);
                         w.PathsToNamespaces.Add("", baseNamespace);
 
-                        w.NamespaceMapper.Add(string.Format("{0}.**.", baseNamespace), string.Format("{0}.Domain.**.", baseNamespace));
-                        w.NamespaceMapper.Add(string.Format("{0}.**.", baseNamespace), string.Format("{0}.Read.**.", baseNamespace));
+                        w.NamespaceMapper.Add(string.Format("{0}.**.", baseNamespace), string.Format("Comcepts.**.", baseNamespace));
+                        w.NamespaceMapper.Add(string.Format("{0}.**.", baseNamespace), string.Format("Domain.**.", baseNamespace));
+                        w.NamespaceMapper.Add(string.Format("{0}.**.", baseNamespace), string.Format("Read.**.", baseNamespace));
+                        w.NamespaceMapper.Add(string.Format("{0}.**.", baseNamespace), string.Format("Events.**.", baseNamespace));
                         w.NamespaceMapper.Add(string.Format("{0}.**.", baseNamespace), string.Format("{0}.**.", baseNamespace));
                     });
         }
