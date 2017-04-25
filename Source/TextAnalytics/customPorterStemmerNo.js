@@ -36,8 +36,3 @@ String.prototype.cleanAndStem = function(keepStops) {
     let stemmedInput = stemmedTokens.join(" ");
     return stemmedInput;
 };
-
-//let result = "Kjøpte masse hagemøbler og de var helt råtne".cleanAndStem();
-Promise.all(promises, () => {
-    //let result = "Kjøpte masse hagemøbler og de var helt råtne".cleanAndStem();
-});
