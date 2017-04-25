@@ -12,9 +12,9 @@ app.post("/tags", (req, res) => {
         "message": ""
     }
     */
-    tagModels.getFor(req.body.domain, req.body.tenant).then(model => {
-        let messageToClassify = `${req.body.subject} ${req.body.message}`;
-        let result = model.getClassifications(messageToClassify);
+
+    let messageToClassify = `${req.body.subject} ${req.body.message}`;
+    tagModels.getTagsFor(req.body.domain, req.body.tenant, messageToClassify).then(result => {
         res.status(200).json(result);
     });
 });

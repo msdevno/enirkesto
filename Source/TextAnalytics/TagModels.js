@@ -2,6 +2,8 @@ let natural = require("natural");
 let fs = require("fs");
 let path = require('path');
 
+require("./customPorterStemmerNo");
+
 let models = {};
 
 const modelsPath = "./models";
@@ -77,7 +79,8 @@ class TagModels
         data.forEach((item) => {
             item.tags.forEach((tag) => {
                 let combined = `${item.subject} ${item.message}`;
-                model.addDocument(combined, tag);
+                let stemmed = combined.cleanAndStem();
+                model.addDocument(stemmed, tag);
             })
         });
         let directory = path.dirname(fileName);
@@ -90,6 +93,37 @@ class TagModels
         console.log("Save model");
         model.save(fileName);
         console.log("Model saved");
+    }
+
+    getTagsFor(domain, tenant, input) {
+        let promise = new Promise(resolve => {
+            let stemmed = input.cleanAndStem();
+            this.getFor(domain, tenant).then(model => {
+                let result = model.getClassifications(stemmed);
+
+                let modified = [];
+                result.forEach(r => {
+                    let valueAsString = r.value.toString();
+                    let index = valueAsString.indexOf("e");
+                    let score = 0;
+                    if( index > 0 ) {
+                        valueAsString = valueAsString.substr(0,index);
+                        score = parseFloat(valueAsString);
+                    } else score = r.value;
+                    console.log(score);
+                    
+                    modified.push({
+                        tag: r.label,
+                        score: score
+                    });
+                });
+
+                let sorted = modified.sort((a,b) => b.score - a.score);
+                
+                resolve(sorted);
+            });
+        });
+        return promise;
     }
 }
 module.exports = TagModels;
