@@ -10,6 +10,7 @@
     <PackageReference Include="Bifrost.Ninject" Version="1.2.0-*" />
     <PackageReference Include="Bifrost.JSON" Version="1.2.0-*" />
     <PackageReference Include="Bifrost.FluentValidation" Version="1.2.0-*" />
+    <PackageReference Include="Bifrost.Read.MongoDB" Version="1.2.0-*" />
     <PackageReference Include="Bifrost.Web" Version="1.2.0-*" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
