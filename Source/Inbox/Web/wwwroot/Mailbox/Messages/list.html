@@ -1,0 +1,76 @@
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">Inbox</h3>
+
+        <div class="box-tools pull-right">
+            <div class="has-feedback">
+                <input type="text" class="form-control input-sm" placeholder="Search Mail">
+                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+            </div>
+        </div>
+    </div>
+    <div class="box-body no-padding">
+
+        <div class="mailbox-controls">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+            </div>
+        </div>
+
+        <div class="table-responsive mailbox-messages">
+            <table class="table table-hover table-striped">
+                <tbody data-bind="foreach: messages">
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>
+                            <button type="button" class="btn btn-default btn-xs" data-toggle="dropdown" aria-expanded="false">
+                                    Tag
+                                    <span class="fa fa-caret-down"></span>
+                                </button>
+                            <ul class="dropdown-menu" data-bind="foreach: $root.tags">
+                                <li><a href="#" data-bind="text: $data">Action</a></li>
+                            </ul>
+                        </td>
+                        <td class="mailbox-star">
+                            <a href="#">
+                                <!--  <i data-bind="css: { 'fa-star': starred, 'fa-star-o': !starred }" class="fa text-yellow"></i> -->
+                            </a>
+                        </td>
+                        <td class="mailbox-name">
+                            <a href="#" data-bind="text: from"></a>
+                        </td>
+                        <td class="mailbox-subject">
+                            <a href="#" data-bind="text: subject"></a>
+                        </td>
+                        <td class="mailbox-attachment">
+                            <i class="fa fa-paperclip"></i>
+                        </td>
+                        <td class="mailbox-date" data-bind="text: received"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--
+        <div class="box-footer no-padding">
+            <div class="mailbox-controls">
+                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
+                </button>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+                </div>
+                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                <div class="pull-right">
+                    1-50/200
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+</div>

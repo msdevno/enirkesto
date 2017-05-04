@@ -1,6 +1,7 @@
 using System.IO;
 using Bifrost.Applications;
 using Bifrost.Configuration;
+using Bifrost.Events;
 
 namespace Web
 {
@@ -14,6 +15,7 @@ namespace Web
             var eventSequenceNumbersPath = Path.Combine(basePath, "EventSequenceNumbers");
             var eventProcessorsStatePath = Path.Combine(basePath, "EventProcessors");
             var eventSourceVersionsPath = Path.Combine(basePath, "EventSourceVersions");
+            var rabbitMQ = "amqp://guest:guest@localhost:5672/";
 
             configure
                 .Application("QuickStart", a => a.Structure(s => s
@@ -29,6 +31,9 @@ namespace Web
                     e.EventSequenceNumbers.UsingFiles(eventSequenceNumbersPath);
                     e.EventProcessorStates.UsingFiles(eventProcessorsStatePath);
                     e.EventSourceVersions.UsingFiles(eventSourceVersionsPath);
+
+                    //e.CommittedEventStreamReceiver.UsingRabbitMQ(rabbitMQ);
+                    //e.CommittedEventStreamSender.UsingRabbitMQ(rabbitMQ);
                 })
 
                 .Serialization

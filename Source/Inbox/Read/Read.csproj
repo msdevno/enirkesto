@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bifrost" Version="1.2.0-*" />
+    <PackageReference Include="Bifrost" Version="1.2.1-*" />
   </ItemGroup>
 
 </Project>
