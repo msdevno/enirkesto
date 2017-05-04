@@ -1,1 +1,7 @@
 # Architecture
+
+## Decoupled
+
+## Dolittle
+
+## Docker
