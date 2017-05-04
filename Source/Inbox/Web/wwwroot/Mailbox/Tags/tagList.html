@@ -8,12 +8,23 @@
                 </button>-->
         </div>
     </div>
+
+    <div class="box-body">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Tagname" data-bind="value: addTag.tag">
+            <span class="input-group-addon">
+                <a href="#" data-bind="command: addTag" title="Add tag"><i class="fa fa-plus"></i></a>
+            </span>
+        </div>
+    </div>
+    
     <div class="box-body no-padding">
         <ul class="nav nav-pills nav-stacked" data-bind="foreach: tags">
             <li><a href="#"><i class="fa fa-circle-o text-red"></i><span data-bind="text: $data"></span> </a></li>
-            <!--
-                <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Promotions</a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> Social</a></li>-->
+            <li>
+            </li>
         </ul>
     </div>
+
+
 </div>
