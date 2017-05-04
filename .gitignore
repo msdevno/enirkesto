@@ -50,3 +50,6 @@ _ReSharper.*
 *.pidb
 *.userprefs
 *.nupkg
+
+# dolittle / bifrost 
+EventStore
