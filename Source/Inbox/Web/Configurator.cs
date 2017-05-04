@@ -8,7 +8,7 @@ namespace Web
     {
         public void Configure(IConfigure configure)
         {
-            var basePath = "App_Data";
+            var basePath = "./EventStore";
             var entitiesPath = Path.Combine(basePath, "Entities");
             var eventsPath = Path.Combine(basePath, "Events");
             var eventSequenceNumbersPath = Path.Combine(basePath, "EventSequenceNumbers");
@@ -25,7 +25,6 @@ namespace Web
 
                 .Events(e =>
                 {
-
                     e.EventStore.UsingFiles(eventsPath);
                     e.EventSequenceNumbers.UsingFiles(eventSequenceNumbersPath);
                     e.EventProcessorStates.UsingFiles(eventProcessorsStatePath);
