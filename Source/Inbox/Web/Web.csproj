@@ -25,5 +25,6 @@
     <ProjectReference Include="..\Read\Read.csproj" />
     <ProjectReference Include="..\Concepts\Concepts.csproj" />
     <ProjectReference Include="..\Read.MongoDB\Read.MongoDB.csproj" />
+    <ProjectReference Include="..\TextAnalytics\TextAnalytics.csproj" />
   </ItemGroup>
 </Project>

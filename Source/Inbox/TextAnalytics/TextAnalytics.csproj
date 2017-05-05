@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\Events\Events.csproj" />
+    <ProjectReference Include="..\Concepts\Concepts.csproj" />
+    <ProjectReference Include="..\Read\Read.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Bifrost" Version="1.2.1-*" />
+  </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+  </PropertyGroup>
+</Project>

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Read", "Read\Read.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concepts", "Concepts\Concepts.csproj", "{F7E61EBA-E6F2-4609-B6F9-65F6C8A503B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAnalytics", "TextAnalytics\TextAnalytics.csproj", "{612D755D-6EFD-4683-82F1-9B75FDA26CFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,5 +88,17 @@ Global
 		{F7E61EBA-E6F2-4609-B6F9-65F6C8A503B8}.Release|x64.Build.0 = Release|x64
 		{F7E61EBA-E6F2-4609-B6F9-65F6C8A503B8}.Release|x86.ActiveCfg = Release|x86
 		{F7E61EBA-E6F2-4609-B6F9-65F6C8A503B8}.Release|x86.Build.0 = Release|x86
+		{612D755D-6EFD-4683-82F1-9B75FDA26CFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{612D755D-6EFD-4683-82F1-9B75FDA26CFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{612D755D-6EFD-4683-82F1-9B75FDA26CFE}.Debug|x64.ActiveCfg = Debug|x64
+		{612D755D-6EFD-4683-82F1-9B75FDA26CFE}.Debug|x64.Build.0 = Debug|x64
+		{612D755D-6EFD-4683-82F1-9B75FDA26CFE}.Debug|x86.ActiveCfg = Debug|x86
+		{612D755D-6EFD-4683-82F1-9B75FDA26CFE}.Debug|x86.Build.0 = Debug|x86
+		{612D755D-6EFD-4683-82F1-9B75FDA26CFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{612D755D-6EFD-4683-82F1-9B75FDA26CFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{612D755D-6EFD-4683-82F1-9B75FDA26CFE}.Release|x64.ActiveCfg = Release|x64
+		{612D755D-6EFD-4683-82F1-9B75FDA26CFE}.Release|x64.Build.0 = Release|x64
+		{612D755D-6EFD-4683-82F1-9B75FDA26CFE}.Release|x86.ActiveCfg = Release|x86
+		{612D755D-6EFD-4683-82F1-9B75FDA26CFE}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 EndGlobal
