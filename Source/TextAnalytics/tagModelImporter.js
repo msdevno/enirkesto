@@ -7,7 +7,8 @@ module.exports = {
         fs.readFile(file, "utf8", (err, data) => {
             console.log("File read");
             let json = JSON.parse(data);
-            tagModels.putFor(json.domain, json.tenant, json.data);
+            console.log(json.key);
+            tagModels.putFor(json.key, json.data);
         });
     }
 };

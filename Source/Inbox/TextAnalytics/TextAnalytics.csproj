@@ -1,11 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
     <ProjectReference Include="..\Events\Events.csproj" />
     <ProjectReference Include="..\Concepts\Concepts.csproj" />
     <ProjectReference Include="..\Read\Read.csproj" />
+    <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Bifrost" Version="1.2.1-*" />
+    <PackageReference Include="System.Net.Http" Version="4.3.1" />
   </ItemGroup>
   <PropertyGroup>
     <TargetFramework>netstandard1.6</TargetFramework>

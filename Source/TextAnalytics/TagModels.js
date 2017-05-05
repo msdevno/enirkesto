@@ -8,48 +8,41 @@ let models = {};
 
 const modelsPath = "./models";
 
-let getKeyFor = (domain, tenant) => {
-    if( !tenant || tenant.length == 0) return domain;
-    let key = `${domain}_${tenant}`;
-    return key;
-}
-
-let getFileNameFor = (domain, tenant) => {
-    let key = getKeyFor(domain,tenant);
+let getFileNameFor = (key) => {
     let path = `${modelsPath}/${key}/tags.json`;
     return path;
 };
 
-class TagModels
-{
+class TagModels {
     createModel() {
         let model = new natural.BayesClassifier();
         return model;
     }
 
     loadModel(path) {
-        let promise = new Promise((resolve) => 
-        {
+        let promise = new Promise((resolve) => {
             natural.BayesClassifier.load(path, null, (err, model) => {
                 resolve(model);
-            });       
+            });
         })
 
         return promise;
     }
 
-    hasModelFor(domain, tenant) {
-        let path = getFileNameFor(domain,tenant);
+    hasModelFor(key) {
+        let path = getFileNameFor(key);
         return fs.existsSync(path);
     }
 
-    getFor(domain, tenant) {
-        let promise = new Promise((resolve)=> {
-            let key = getKeyFor(domain,tenant);
-            if( models.hasOwnProperty(key)) return models[key];
-            let path = getFileNameFor(domain,tenant);
+    getFor(key) {
+        let promise = new Promise((resolve) => {
+            if (models.hasOwnProperty(key)) {
+                resolve(models[key]);
+                return;
+            }
+            let path = getFileNameFor(key);
 
-            if( this.hasModelFor(domain,tenant) ) {
+            if (this.hasModelFor(key)) {
                 this.loadModel(path).then(resolve);
             } else {
                 let model = this.createModel();
@@ -60,43 +53,41 @@ class TagModels
         return promise;
     }
 
-    putFor(domain, tenant, data) {
-        let key = getKeyFor(domain,tenant);
-        let fileName = getFileNameFor(domain,tenant);
+    putFor(key, data) {
+        let fileName = getFileNameFor(key);
 
-        let model = this.createModel();
-        
-        let left = data.length;
+        this.getFor(key).then(model => {
+            let left = data.length;
 
-        model.events.on("trainedWithDocument", (obj) => {
-            console.log(`${left} documents left`);
-            left--;
+            model.events.on("trainedWithDocument", (obj) => {
+                console.log(`${left} documents left`);
+                left--;
+            });
+
+            console.log(`Putting in ${data.length} documents`);
+            data.forEach((item) => {
+                item.tags.forEach((tag) => {
+                    let stemmed = item.text.cleanAndStem();
+                    model.addDocument(stemmed, tag);
+                })
+            });
+            let directory = path.dirname(fileName);
+            if (!fs.existsSync(directory)) fs.mkdirSync(directory);
+
+            console.log("Train model");
+            model.train();
+            models[key] = model;
+
+            console.log("Save model");
+            model.save(fileName);
+            console.log("Model saved");
         });
-
-        console.log(`Putting in ${data.length} documents`);
-        data.forEach((item) => {
-            item.tags.forEach((tag) => {
-                let combined = `${item.subject} ${item.message}`;
-                let stemmed = combined.cleanAndStem();
-                model.addDocument(stemmed, tag);
-            })
-        });
-        let directory = path.dirname(fileName);
-        if( !fs.existsSync(directory) ) fs.mkdirSync(directory);
-
-        console.log("Train model");
-        model.train();
-        models[key] = model;
-
-        console.log("Save model");
-        model.save(fileName);
-        console.log("Model saved");
     }
 
-    getTagsFor(domain, tenant, input) {
+    getTagsFor(key, input) {
         let promise = new Promise(resolve => {
             let stemmed = input.cleanAndStem();
-            this.getFor(domain, tenant).then(model => {
+            this.getFor(key).then(model => {
                 let result = model.getClassifications(stemmed);
 
                 let modified = [];
@@ -104,20 +95,20 @@ class TagModels
                     let valueAsString = r.value.toString();
                     let index = valueAsString.indexOf("e");
                     let score = 0;
-                    if( index > 0 ) {
-                        valueAsString = valueAsString.substr(0,index);
+                    if (index > 0) {
+                        valueAsString = valueAsString.substr(0, index);
                         score = parseFloat(valueAsString);
                     } else score = r.value;
                     console.log(score);
-                    
+
                     modified.push({
                         tag: r.label,
                         score: score
                     });
                 });
 
-                let sorted = modified.sort((a,b) => b.score - a.score);
-                
+                let sorted = modified.sort((a, b) => b.score - a.score);
+
                 resolve(sorted);
             });
         });

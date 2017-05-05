@@ -3,6 +3,7 @@
     "configurations": [
         {
             "name": ".NET Core Launch (web)",
+            "requireExactSource": true,
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
@@ -34,6 +35,7 @@
         },
         {
             "name": ".NET Core Attach",
+            "requireExactSource": true,
             "type": "coreclr",
             "request": "attach",
             "processId": "${command:pickProcess}"

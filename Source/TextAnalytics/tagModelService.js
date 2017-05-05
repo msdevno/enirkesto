@@ -6,23 +6,20 @@ app.put("/tagmodel", (req, res) => {
     /*
     Expected JSON Payload:
     {
-        "domain": "banking", // retail // general
-        "tenant": "", // optional
+        "key": "a unique key for the model",
         "data": [
             {
-                "subject": "",
-                "message": "",
+                "text": "",
                 "tags": ["",""]
             },
             {
-                "subject": "",
-                "message": "",
+                "text": "",
                 "tags": ["",""]
             }
         ]
     }
     */
     
-    tagModels.putFor(req.body.domain, req.body.tenant, req.body.data);
+    tagModels.putFor(req.body.key, req.body.data);
     res.status(200).json({});
 });

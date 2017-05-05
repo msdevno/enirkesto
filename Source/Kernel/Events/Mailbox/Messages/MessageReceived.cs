@@ -5,7 +5,7 @@ namespace Events.Mailbox.Messages
 {
     public class MessageReceived : Event
     {
-        public MessageReceived(EventSourceId inbox) : base(inbox) {}
+        public MessageReceived(EventSourceId mailbox) : base(mailbox) {}
 
         public Guid MessageId { get; set; }
         public string Sender { get; set; }

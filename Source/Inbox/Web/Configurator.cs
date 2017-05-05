@@ -22,6 +22,7 @@ namespace Web
                         .Domain("Domain.{BoundedContext}.-{Module}.-{Feature}.^{SubFeature}*")
                         .Events("Events.{BoundedContext}.-{Module}.-{Feature}.^{SubFeature}*")
                         .Read("Read.{BoundedContext}.-{Module}.-{Feature}.^{SubFeature}*")
+                        .Read("TextAnalytics.{BoundedContext}.-{Module}.-{Feature}.^{SubFeature}*")
                         .Frontend("Web.{BoundedContext}.-{Module}.-{Feature}.^{SubFeature}*")
                 ))
 

@@ -6,15 +6,12 @@ app.post("/tags", (req, res) => {
     /*
     Expected JSON Payload:
     {
-        "domain": "banking", // retail // general
-        "tenant": "", // optional
-        "subject": "",
-        "message": ""
+        "key": "a unique key for the model",
+        "text": "Text to classify - get tags for"
     }
     */
 
-    let messageToClassify = `${req.body.subject} ${req.body.message}`;
-    tagModels.getTagsFor(req.body.domain, req.body.tenant, messageToClassify).then(result => {
+    tagModels.getTagsFor(req.body.key, req.body.text).then(result => {
         res.status(200).json(result);
     });
 });
