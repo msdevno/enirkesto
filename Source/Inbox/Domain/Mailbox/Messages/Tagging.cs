@@ -12,12 +12,12 @@ namespace Domain.Mailbox.Messages
 
         public void Add(TagName tag)
         {
-            Apply(new TagAdded(EventSourceId) { Tag = tag });
+            Apply(new MessageTagged(EventSourceId) { Tag = tag });
         }
 
         public void Remove(TagName tag)
         {
-            Apply(new TagRemoved(EventSourceId) { Tag = tag });
+            Apply(new MessageUntagged(EventSourceId) { Tag = tag });
         }
     }
 }

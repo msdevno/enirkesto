@@ -15,7 +15,7 @@ namespace Web
     {
         public void ApplyRule(RewriteContext context)
         {
-            if( context.HttpContext.Request.Path == "/Messages/debug" )
+            if( context.HttpContext.Request.Path == "/Mailbox/Messages/debug" )
                 context.HttpContext.Request.Path = "/";
         }
     }

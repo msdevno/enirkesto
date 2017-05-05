@@ -1,7 +1,7 @@
 using Bifrost.Commands;
 using Concepts.Mailbox;
 
-namespace Domain.Mailbox.Tags
+namespace Domain.Mailbox
 {
     public class AddTag : Command
     {

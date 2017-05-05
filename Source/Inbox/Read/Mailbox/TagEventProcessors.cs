@@ -1,14 +1,14 @@
 using System;
 using Bifrost.Events;
 using Bifrost.Read;
-using Events.Mailbox.Tags;
+using Events.Mailbox;
 
-namespace Read.Mailbox.Tags
+namespace Read.Mailbox
 {
-    public class EventProcessors : IProcessEvents
+    public class TagEventProcessors : IProcessEvents
     {
         IReadModelRepositoryFor<Tag> _repository;
-        public EventProcessors(IReadModelRepositoryFor<Tag> repository)
+        public TagEventProcessors(IReadModelRepositoryFor<Tag> repository)
         {
             _repository = repository;
         }

@@ -23,12 +23,12 @@
                     <tr>
                         <td><input type="checkbox"></td>
                         <td>
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="dropdown" aria-expanded="false">
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     Tag
                                     <span class="fa fa-caret-down"></span>
                                 </button>
                             <ul class="dropdown-menu" data-bind="foreach: $root.tags">
-                                <li><a href="#" data-bind="text: $data">Action</a></li>
+                                <li><a href="#" data-bind="text: name">Action</a></li>
                             </ul>
                         </td>
                         <td class="mailbox-star">

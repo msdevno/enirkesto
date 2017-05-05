@@ -4,7 +4,7 @@ using Concepts;
 using Concepts.Mailbox;
 using Concepts.Mailbox.Tags;
 
-namespace Read.Mailbox.Tags
+namespace Read.Mailbox
 {
     public class Tag : IReadModel
     {

@@ -3,7 +3,7 @@ using Bifrost.Commands;
 using Bifrost.Domain;
 using Concepts;
 
-namespace Domain.Mailbox.Tags
+namespace Domain.Mailbox
 {
     public class RegistrationCommandHandlers : IHandleCommands
     {

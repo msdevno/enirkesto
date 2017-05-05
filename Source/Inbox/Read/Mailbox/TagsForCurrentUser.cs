@@ -1,7 +1,7 @@
 using System.Linq;
 using Bifrost.Read;
 
-namespace Read.Mailbox.Tags
+namespace Read.Mailbox
 {
     public class TagsForCurrentUser : IQueryFor<Tag>
     {

@@ -1,11 +1,11 @@
+using System;
 using Bifrost.Events;
 
-namespace Events.Mailbox.Messages
+namespace Events.Mailbox
 {
     public class TagAdded : Event
     {
         public TagAdded(EventSourceId eventSourceId) : base(eventSourceId) {}
-
-        public string Tag { get; set; }
+        public string Name { get; set; }
     }
 }

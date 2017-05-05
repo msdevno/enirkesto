@@ -1,7 +1,7 @@
 using Bifrost.FluentValidation.Commands;
 using FluentValidation;
 
-namespace Domain.Mailbox.Tags
+namespace Domain.Mailbox
 {
     public class AddTagValidation : CommandInputValidator<AddTag>
     {

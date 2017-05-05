@@ -2,9 +2,9 @@ using Concepts;
 using Concepts.Mailbox;
 using Bifrost.Domain;
 using Bifrost.Events;
-using Events.Mailbox.Tags;
+using Events.Mailbox;
 
-namespace Domain.Mailbox.Tags
+namespace Domain.Mailbox
 {
     public class Registration : AggregateRoot
     {
