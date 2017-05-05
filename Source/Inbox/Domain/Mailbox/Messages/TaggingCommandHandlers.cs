@@ -19,7 +19,7 @@ namespace Domain.Mailbox.Messages
             tagging.Add(command.Tag);
         }
 
-        public void Handle(RemoveTag command)
+        public void Handle(RemoveTagFromMessage command)
         {
             var tagging = _taggingRepository.Get((Guid)command.MessageId);
             tagging.Remove(command.Tag);

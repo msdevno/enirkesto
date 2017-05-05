@@ -1,9 +1,7 @@
 Bifrost.namespace("Web.Mailbox.Tags", {
-    tagList: Bifrost.views.ViewModel.extend(function(addTag) {
+    tagList: Bifrost.views.ViewModel.extend(function(addTag, tagsForCurrentUser) {
         this.addTag = addTag;
 
-        this.tags = ko.observableArray([
-            "Spam"
-        ]);
+        this.tags = tagsForCurrentUser.all();
     })
 });

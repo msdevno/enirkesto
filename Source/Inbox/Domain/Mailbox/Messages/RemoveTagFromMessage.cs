@@ -4,9 +4,9 @@ using Concepts.Mailbox.Messages;
 
 namespace Domain.Mailbox.Messages
 {
-    public class RemoveTag : Command
+    public class RemoveTagFromMessage : Command
     {
         public MessageId MessageId { get; set; }
-        public Tag Tag { get; set; }
+        public TagName Tag { get; set; }
     }
 }

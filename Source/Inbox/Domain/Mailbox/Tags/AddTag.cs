@@ -5,6 +5,6 @@ namespace Domain.Mailbox.Tags
 {
     public class AddTag : Command
     {
-        public Tag  Tag { get; set; }
+        public TagName  Tag { get; set; }
     }
 }

@@ -10,12 +10,12 @@ namespace Domain.Mailbox.Messages
     {
         public Tagging(EventSourceId eventSourceId) : base(eventSourceId) {}
 
-        public void Add(Tag tag)
+        public void Add(TagName tag)
         {
             Apply(new TagAdded(EventSourceId) { Tag = tag });
         }
 
-        public void Remove(Tag tag)
+        public void Remove(TagName tag)
         {
             Apply(new TagRemoved(EventSourceId) { Tag = tag });
         }

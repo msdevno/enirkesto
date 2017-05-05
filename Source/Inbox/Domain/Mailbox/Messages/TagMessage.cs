@@ -7,6 +7,6 @@ namespace Domain.Mailbox.Messages
     public class AddTag : Command
     {
         public MessageId MessageId { get; set; }
-        public Tag Tag { get; set; }
+        public TagName Tag { get; set; }
     }
 }

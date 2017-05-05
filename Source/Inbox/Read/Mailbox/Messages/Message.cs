@@ -9,7 +9,7 @@ namespace Read.Mailbox.Messages
     {
         public Message()
         {
-            Tags = new Tag[0];
+            Tags = new TagName[0];
         }
 
         public Guid Id 
@@ -29,6 +29,6 @@ namespace Read.Mailbox.Messages
 
         public DateTimeOffset Received { get; set; }
 
-        public Tag[] Tags { get; set; }       
+        public TagName[] Tags { get; set; }       
     }
 }

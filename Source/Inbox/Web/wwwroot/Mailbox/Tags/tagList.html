@@ -10,21 +10,22 @@
     </div>
 
     <div class="box-body">
-        <div class="input-group">
+        <!-- ko if: addTag.tag.validator.message() != '' -->
+        <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i>&nbsp;<span data-bind="validationMessageFor: addTag.tag"></span></label>
+        <!-- /ko -->
+        <div class="input-group" data-bind="css: { 'has-error': !addTag.isValid() }">
             <input type="text" class="form-control" placeholder="Tagname" data-bind="value: addTag.tag">
             <span class="input-group-addon">
                 <a href="#" data-bind="command: addTag" title="Add tag"><i class="fa fa-plus"></i></a>
             </span>
         </div>
     </div>
-    
+
     <div class="box-body no-padding">
         <ul class="nav nav-pills nav-stacked" data-bind="foreach: tags">
-            <li><a href="#"><i class="fa fa-circle-o text-red"></i><span data-bind="text: $data"></span> </a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-red"></i><span data-bind="text: name"></span> </a></li>
             <li>
             </li>
         </ul>
     </div>
-
-
 </div>
