@@ -13,13 +13,13 @@ namespace Domain.Mailbox.Messages
             _taggingRepository = taggingRepository;
         }
 
-        public void Handle(AddTag command)
+        public void Handle(TagMessage command)
         {
             var tagging = _taggingRepository.Get((Guid)command.MessageId);
             tagging.Add(command.Tag);
         }
 
-        public void Handle(RemoveTagFromMessage command)
+        public void Handle(UntagMessage command)
         {
             var tagging = _taggingRepository.Get((Guid)command.MessageId);
             tagging.Remove(command.Tag);

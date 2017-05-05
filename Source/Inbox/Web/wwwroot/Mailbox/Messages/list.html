@@ -28,7 +28,7 @@
                                     <span class="fa fa-caret-down"></span>
                                 </button>
                             <ul class="dropdown-menu" data-bind="foreach: $root.tags">
-                                <li><a href="#" data-bind="text: name">Action</a></li>
+                                <li><a href="#" data-bind="click: $root.toggleTag.bind($root,$parent,$data), text: name">Action</a></li>
                             </ul>
                         </td>
                         <td class="mailbox-star">

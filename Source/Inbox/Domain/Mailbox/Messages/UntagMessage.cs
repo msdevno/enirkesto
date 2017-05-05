@@ -4,7 +4,7 @@ using Concepts.Mailbox.Messages;
 
 namespace Domain.Mailbox.Messages
 {
-    public class RemoveTagFromMessage : Command
+    public class UntagMessage : Command
     {
         public MessageId MessageId { get; set; }
         public TagName Tag { get; set; }
