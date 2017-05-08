@@ -9,7 +9,7 @@ The primary goals of this project is to enable the business scenarios for the pa
 
 ### Architectural
 
-In addition to the core business goals as mentioned above we also wanted to establish good architectural patterns around the project. By leveraging the concepts behind [Domain Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design), [CQRS](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs) and [Event Sourcing](https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing) we build in a modern, cloud ready fashion - focusing on the core business domain. The project leverages [Bifrost](http://www.dolittle.io/bifrost) (soon to called dolittle); a platform enabling you to be focused on the domain and offering the building blocks for CQRS and Event Sourcing. Read more about the architecture [here](Documentation/Architecture.md.
+In addition to the core business goals as mentioned above we also wanted to establish good architectural patterns around the project. By leveraging the concepts behind [Domain Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design), [CQRS](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs) and [Event Sourcing](https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing) we build in a modern, cloud ready fashion - focusing on the core business domain. The project leverages [Bifrost](http://www.dolittle.io/bifrost) (soon to called dolittle); a platform enabling you to be focused on the domain and offering the building blocks for CQRS and Event Sourcing. Read more about the architecture [here](Documentation/Architecture.md).
 
 ## Getting started
 
