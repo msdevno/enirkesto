@@ -2,8 +2,6 @@ let natural = require("natural");
 let fs = require("fs");
 let path = require('path');
 
-require("./customPorterStemmerNo");
-
 let models = {};
 
 const modelsPath = "./models";
@@ -59,7 +57,7 @@ class TagModels {
         this.getFor(key).then(model => {
             let left = data.length;
 
-            model.events.on("trainedWithDocument", (obj) => {
+            model.events.on("trainedWithDocument", () => {
                 console.log(`${left} documents left`);
                 left--;
             });
