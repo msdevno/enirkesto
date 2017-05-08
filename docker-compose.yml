@@ -4,21 +4,17 @@ services:
     ports:
     - "5000:5000"
     image: "enirkesto/inbox"
+    links:
+    - textanalytics
+    - redis
+    - mongodb
+    
   textanalytics:
     ports:
-    - "3000:3000"
     image: "enirkesto/textanalytics"
-  rabbit:
-    ports:
-    - "5672:5672"
-    - "15672:15672"
-    image: "rabbitmq:3-management"
+
   redis:
-    ports:
-    - "6379:6379"
-    - "6380:6380"
     image: "redis"
+
   mongodb:
-    ports:
-    - "27017:27017"
     image: "mongo"
