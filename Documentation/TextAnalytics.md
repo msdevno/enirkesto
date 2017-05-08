@@ -1,5 +1,6 @@
 # Text Analytics
-The Text Analytics section of Enirkesto, is divided into two parts. 
+
+The Text Analytics section of Enirkesto, is divided into two parts.
 The first part consists of tagging, and the second of sentiment analysis.
 Many of the same concepts are used throughout both of the segments.
 The core engine leverages the [Natural framework](https://github.com/NaturalNode/natural) for both tagging and sentiment.
@@ -8,7 +9,8 @@ The core engine leverages the [Natural framework](https://github.com/NaturalNode
 `Sentiment (extracting the feeling and attitude of the text)`
 
 ## The process (tagging)
-Keyword extraction is tasked with the automatic identification of terms that best describe the subject of a document. This is referred to as “tagging” in Enirkesto. 
+
+Keyword extraction is tasked with the automatic identification of terms that best describe the subject of a document. This is referred to as “tagging” in Enirkesto.
 
 ### Tokenization
 
@@ -24,6 +26,7 @@ There are pros and cons for both approaches mentioned above. Using a lexicon is 
 The engine also converts the tokens into lowercase for normalization purposes.
 
 ### Stemming
+
 After the tokenization has been conducted, the next technique Enirkesto leverages, is the “stemming” capability from the Natural-framework. In linguistic morphology and information retrieval, Stemming is the process of reducing a word into its stem, i.e. its root form. The root form is not necessarily a word by itself, but it can be used to generate words by concatenating the right suffix. An example could be “Fishes”, or “Fished” into; “Fish”. A popular stemmer is called the Porter stemmer and was first introduced in the 1980’s. This is currently used in the Enirkesto engine. The cool thing about Enirkesto, is that it uses a combination of the Porter Stemmer and a dictionary with words. This can be extended for whatever language you prefer. If the word doesn’t exist in the dictionary, the stemming engine does its best to reduce the word into its stem. However, if the word is present in the dictionary, the engine will use the proper root form that is stated within the dictionary.
 
 ### Stop words
