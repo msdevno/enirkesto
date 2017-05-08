@@ -330,20 +330,5 @@ Below is the full pipeline of Bifrost when utilizing all its capabilities.
 ![Bifrost Pipeline](images/full_pipeline.png)
 
 
-## Conclusion
+[Einar Ingebrigtsen](https://github.com/einari) has created a video that explains architecture for Microservices, touching on most of the concepts described in this article and it can be found [here](www.youtube.com/embed/ewn0fhK2sA4).
 
-This article described all the principles that has played a key role in building Bifrost and will remain key to the future development of
-Bifrost. The focus is to be able to break things into the smallest of problems and be very explicit about it.
-This gives you the freedom of chosing how to deploy your software. If you're starting out with something new, you might now have the
-luxury of running it scaled out in any way; nor should you, after all you don't know how it will be responded to in the market - nor
-do you know the performance characteristics of your system, therefor you should probably just deploy it in such a way that it runs
-as a single process on a single server and scale out when needed. It is all about providing the capability when needed, build the
-system in a way that makes this possible. This is what Bifrost aims at making simple without compromise.
-
-[Einar Ingebrigtsen](https://github.com/einari) has created a video for [The Code Lab](http://thecodelab.tv) that explains architecture for Microservices, touching on most of the concepts described in this article:
-
-<div class="video">
-    <figure>
-        <iframe width="640" height="480" src="//www.youtube.com/embed/ewn0fhK2sA4" frameborder="0" allowfullscreen></iframe>
-    </figure>
-</div>
