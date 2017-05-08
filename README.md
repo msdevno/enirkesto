@@ -17,6 +17,8 @@ To get started with the code, you will need [NodeJS](https://nodejs.org/en/) and
 
 Some of the projects are shared, these are expected to be symbolically linked into the projects that need them. Before you open up any of the projects you therefor have to run the appropriate setup script for your platform to enable this [setup.sh](setup.sh) (Mac / Linux) and [setup.cmd](setup.cmd) (Windows). More details on the different projects can be found [here](Documentation/Projects.md).
 
+
+
 ### Docker containers
 
 A full running version of every part of the system are available as Docker containers [here](https://hub.docker.com/u/enirkesto/).
@@ -27,3 +29,4 @@ You can run everything by navigating with your terminal / console to the root of
 $ docker-compose up
 ```
 
+If you want to build everything from scratch and get the Docker images locally from your own local repository, you can run the [build.sh](build.sh) / [build.cmd](build.cmd) script. Mind that the images will targetting the [enirkesto](https://hub.docker.com/u/enirkesto/) organization, but you can of course change that inside the scripts.
