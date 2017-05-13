@@ -9,6 +9,8 @@
   <ItemGroup>
     <PackageReference Include="Bifrost" Version="1.2.1-*"/>
     <PackageReference Include="Bifrost.Events.RabbitMQ" Version="1.2.1-*"/>
+    <PackageReference Include="Bifrost.Events.Redis" Version="1.2.1-*"/>
+    <PackageReference Include="Bifrost.Events.MongoDB" Version="1.2.1-*"/>
     <PackageReference Include="Bifrost.Ninject" Version="1.2.1-*"/>
     <PackageReference Include="Bifrost.JSON" Version="1.2.1-*"/>
     <PackageReference Include="Bifrost.FluentValidation" Version="1.2.1-*"/>
