@@ -3,6 +3,11 @@
 This project was made in collaboration with a partner; [SocialBoards](http://socialboards.com) from the need of text analytics in Norwegian. With [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services) not having support for Norwegian for what the partner needed at the time of doing this project (April / May of 2017). [SocialBoards](http://socialboards.com) delivers a unified support inbox aggregated from multiple channels, amongst these social channels such as [Twitter](https://twitter.com), [Facebook](https://facebook.com), [Instagram](https://instagram.com) and more. Enirkesto is basically Inbox in [Esperanto](https://en.wikipedia.org/wiki/Esperanto) and is as close as we can go in an open source project to the
 core business of what [SocialBoards](http://socialboards.com) delivers.
 
+## Hackfest
+
+In order to do a proper Proof-of-Concept for this, we decided to do a hackfest with the partner. You can read more about it [here](Documentation/Hackfest.md).
+
+
 ## Goals
 
 The primary goals of this project is to enable the business scenarios for the partner, which can be broken down into tagging of messages and sentiment analysis. You can read about the conclusion of how we ended up doing text analytics [here](Documentation/TextAnalytics.md).
