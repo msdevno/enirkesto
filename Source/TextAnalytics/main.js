@@ -1,4 +1,4 @@
-//require("./tagModelImporter").import("./models/kid.txt");
+//require("./modelImporter").import("./models/kid.txt");
 
 // APIs that we expose
 require("./api/classify");
