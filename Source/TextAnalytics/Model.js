@@ -54,11 +54,18 @@ class Model {
                 _model.set(self, createModel());
             }
 
+
             Promise.all(promises).then(results => {
                 _stemmer.set(self, results[0]);
                 if (results.length == 2) {
                     _model.set(self, results[1]);
                 }
+
+                let model = _model.get(self);
+                model.events.on("trainedWithDocument", (status) => {
+                    console.log(`Trained with document ${status.index} of ${status.total}`);
+                });
+                
                 resolve();
             });
         });
