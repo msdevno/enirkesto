@@ -32,6 +32,9 @@ A full running version of every part of the system are available as Docker conta
 If you haven't already got Docker installed - here is how you get started on [Mac](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/linux/), [Windows](https://docs.docker.com/docker-for-windows/).
 You can run everything by navigating with your terminal / console to the root of this project and enter the following:
 
+>Linux based containers are assumed.
+
+
 ```shell
 $ docker-compose up
 ```
