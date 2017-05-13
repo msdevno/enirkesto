@@ -21,7 +21,9 @@ class Stopwords {
         let self = this;
         let promise = new Promise((resolve) => {
             let file = path.join(process.cwd(), `${root_folder}/stopwords.${language}.txt`);
-            if (fs.existsSync(file)) {
+            if (!fs.existsSync(file)) {
+                resolve();
+            } else {
                 lineReader(file, word => self.words.push(word.trim())).then(() => resolve());
             }
         });

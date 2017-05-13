@@ -11,6 +11,7 @@ module.exports = {
         // for this we're going to do this.
         if( iso639_2 == "nno") iso639_2 = "nob";
         let language = langs.where("2", iso639_2);
+        if( !language ) return "[UNKNOWN_LANGUAGE]";
         return language["1"];
     }
 }

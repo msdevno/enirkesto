@@ -1,6 +1,25 @@
 let models = require("./models");
 module.exports = {
     import: (file) => {
+        /*
+        Expected file format:
+        {
+            "key": "a unique key for the model",
+            "language": "iso639 - 2 letter representation e.g. nb for Norwegian Bokmål",
+            "data": [
+                {
+                    "text": "",
+                    "classifiers": ["",""]
+                },
+
+                {
+                    "text": "",
+                    "classifiers": ["",""]
+                }
+            ]
+        }
+        */
+        
         let fs = require("fs");
         console.log("Read file");
         fs.readFile(file, "utf8", (err, data) => {
