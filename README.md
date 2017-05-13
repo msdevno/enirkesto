@@ -17,6 +17,8 @@ To get started with the code, you will need [NodeJS](https://nodejs.org/en/) and
 
 Some of the projects are shared, these are expected to be symbolically linked into the projects that need them. Before you open up any of the projects you therefor have to run the appropriate setup script for your platform to enable this [setup.sh](setup.sh) (Mac / Linux) and [setup.cmd](setup.cmd) (Windows). More details on the different projects can be found [here](Documentation/Projects.md).
 
+For running the Text Analytics host and playing around with the APIs directly, read more [here](GettingStarted.md).
+
 
 
 ### Docker containers
