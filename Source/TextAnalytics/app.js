@@ -6,5 +6,5 @@ app.use(bodyParser.json());
 module.exports = app;
 
 app.listen(3000, () => {
-    console.log("running");
+    console.log("running on port 3000");
 });
