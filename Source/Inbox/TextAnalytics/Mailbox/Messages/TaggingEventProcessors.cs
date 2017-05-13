@@ -25,22 +25,16 @@ namespace TextAnalytics.Mailbox.Messages
             var payload = new 
             {
                 key = mailbox,
-                data = new[] 
+                text=$"{message.Subject} {message.Body}",
+                classifiers= new[] 
                 {
-                    new 
-                    {
-                        text=$"{message.Subject} {message.Body}",
-                        tags= new[] 
-                        {
-                            @event.Tag
-                        }
-                    }
+                    @event.Tag
                 }
             };
 
             Task.Run(async () =>
             {
-                await _restOperations.PUT("http://localhost:3000/tagmodel", payload);
+                await _restOperations.PUT("http://localhost:3000/models/tags/train", payload);
             });
 
             // Get message by its event source ID
