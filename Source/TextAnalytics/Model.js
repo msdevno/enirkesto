@@ -90,6 +90,15 @@ class Model {
 
     retrain() {
         this.model.retrain();
+        this.save();
+    }
+
+    train() {
+        this.model.train();
+        this.save();
+    }
+
+    save() {
         let folder = getFolderFor(this.key);
         let filename = getFileNameFor(this.key, this.type, this.language);
 
