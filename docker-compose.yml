@@ -16,5 +16,8 @@ services:
   redis:
     image: "redis"
 
-  mongodb:
+  readmodels:
+    image: "mongo"
+  
+  eventstore:
     image: "mongo"
