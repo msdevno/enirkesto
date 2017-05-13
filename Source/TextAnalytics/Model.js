@@ -114,7 +114,7 @@ let getFolderFor = (key) => {
 };
 
 let getFileNameFor = (key, type, language) => {
-    let file = `${getFolderFor(key)}/tags.${language}.json`;
+    let file = `${getFolderFor(key)}/${type}.${language}.json`;
     return file;
 };
 
@@ -145,7 +145,7 @@ let sort = (input) => {
         } else score = r.value;
 
         modified.push({
-            tag: r.label,
+            classification: r.label,
             score: score
         });
     });
