@@ -15,7 +15,18 @@ class Stemmer {
         _language.set(this, language);
         this.dictionary = {};
 
-        let actualStemmer = natural.PorterStemmerNo;
+        let actualStemmer = natural.PorterStemmer;
+        switch(language)
+        {
+            case "es": actualStemmer = natural.PorterStemmerEs; break;
+            case "fa": actualStemmer = natural.PorterStemmerFa; break;
+            case "fr": actualStemmer = natural.PorterStemmerFr; break;
+            case "it": actualStemmer = natural.PorterStemmerIt; break;
+            case "nb": actualStemmer = natural.PorterStemmerNo; break;
+            case "pt": actualStemmer = natural.PorterStemmerPt; break;
+            case "ru": actualStemmer = natural.PorterStemmerRu; break;
+        }
+
         _actualStemmer.set(this, actualStemmer);
         actualStemmer._originalStem = actualStemmer.stem;
         actualStemmer.stem = this.stem;
