@@ -1,7 +1,9 @@
+using System;
 using System.IO;
 using Bifrost.Applications;
 using Bifrost.Configuration;
 using Bifrost.Events;
+using Microsoft.Extensions.Configuration;
 
 namespace Web
 {
@@ -15,10 +17,16 @@ namespace Web
             var eventSequenceNumbersPath = Path.Combine(basePath, "EventSequenceNumbers");
             var eventProcessorsStatePath = Path.Combine(basePath, "EventProcessors");
             var eventSourceVersionsPath = Path.Combine(basePath, "EventSourceVersions");
-            var rabbitMQ = "amqp://guest:guest@localhost:5672/";
+
+            var redisConnectionString = Environment.GetEnvironmentVariable("REDIS_CONNECTIONSTRING");
+            var readModelsConnectionString = Environment.GetEnvironmentVariable("READMODELS_CONNECTIONSTRING");
+            var eventStoreConnectionString = Environment.GetEnvironmentVariable("EVENTSTORE_CONNECTIONSTRING");
+
+            if( string.IsNullOrEmpty(readModelsConnectionString)) readModelsConnectionString = "mongodb://localhost:27017";
+            if( string.IsNullOrEmpty(eventStoreConnectionString)) eventStoreConnectionString = "mongodb://localhost:27018";
 
             configure
-                .Application("QuickStart", a => a.Structure(s => s
+                .Application("Enirkesto", a => a.Structure(s => s
                         .Domain("Domain.{BoundedContext}.-{Module}.-{Feature}.^{SubFeature}*")
                         .Events("Events.{BoundedContext}.-{Module}.-{Feature}.^{SubFeature}*")
                         .Read("Read.{BoundedContext}.-{Module}.-{Feature}.^{SubFeature}*")
@@ -28,21 +36,27 @@ namespace Web
 
                 .Events(e =>
                 {
-                    e.EventStore.UsingFiles(eventsPath);
-                    e.EventSequenceNumbers.UsingFiles(eventSequenceNumbersPath);
-                    e.EventProcessorStates.UsingFiles(eventProcessorsStatePath);
-                    e.EventSourceVersions.UsingFiles(eventSourceVersionsPath);
+                    if (string.IsNullOrEmpty(redisConnectionString))
+                    {
+                        e.EventSequenceNumbers.UsingFiles(eventSequenceNumbersPath);
+                        e.EventProcessorStates.UsingFiles(eventProcessorsStatePath);
+                        e.EventSourceVersions.UsingFiles(eventSourceVersionsPath);
+                    }
+                    else
+                    {
+                        e.EventSequenceNumbers.UsingRedis(redisConnectionString);
+                        e.EventProcessorStates.UsingRedis(redisConnectionString);
+                        e.EventSourceVersions.UsingRedis(redisConnectionString);
+                    }
 
-                    //e.CommittedEventStreamReceiver.UsingRabbitMQ(rabbitMQ);
-                    //e.CommittedEventStreamSender.UsingRabbitMQ(rabbitMQ);
+                    e.EventStore.UsingFiles(eventsPath);
                 })
 
                 .Serialization
                     .UsingJson()
 
                 .DefaultStorage
-                    .UsingMongoDB(e => e.WithUrl("mongodb://localhost:27017").WithDefaultDatabase("inboxes"))
-                    //.UsingFiles(entitiesPath)
+                    .UsingMongoDB(e => e.WithUrl(readModelsConnectionString).WithDefaultDatabase("inboxes"))
 
                 .Frontend
                     .Web(w =>
@@ -50,13 +64,7 @@ namespace Web
                         w.AsSinglePageApplication();
                         w.PathsToNamespaces.Clear();
 
-                        var baseNamespace = global::Bifrost.Configuration.Configure.Instance.EntryAssembly.GetName().Name;
-
-                        // Normally you would use the base namespace from the assembly - but since the demo code is written for a specific namespace
-                        // all the conventions in Bifrost won't work.
-                        // Recommend reading up on the namespacing and conventions related to it:
-                        // https://dolittle.github.io/bifrost/Frontend/JavaScript/namespacing.html
-                        baseNamespace = "Web";
+                        var baseNamespace = "Web";
 
                         var @namespace = string.Format("{0}.**.", baseNamespace);
 
@@ -64,11 +72,10 @@ namespace Web
                         w.PathsToNamespaces.Add("/**/", @namespace);
                         w.PathsToNamespaces.Add("", baseNamespace);
 
-                        w.NamespaceMapper.Add(string.Format("{0}.**.", baseNamespace), string.Format("Comcepts.**.", baseNamespace));
-                        w.NamespaceMapper.Add(string.Format("{0}.**.", baseNamespace), string.Format("Domain.**.", baseNamespace));
-                        w.NamespaceMapper.Add(string.Format("{0}.**.", baseNamespace), string.Format("Read.**.", baseNamespace));
-                        w.NamespaceMapper.Add(string.Format("{0}.**.", baseNamespace), string.Format("Events.**.", baseNamespace));
-                        w.NamespaceMapper.Add(string.Format("{0}.**.", baseNamespace), string.Format("{0}.**.", baseNamespace));
+                        w.NamespaceMapper.Add($"{baseNamespace}.**.","Concepts.**.");
+                        w.NamespaceMapper.Add($"{baseNamespace}.**.","Read.**.");
+                        w.NamespaceMapper.Add($"{baseNamespace}.**.","Events.**.");
+                        w.NamespaceMapper.Add($"{baseNamespace}.**.",$"{baseNamespace}.**.");
                     });
         }
 
