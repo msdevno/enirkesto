@@ -1,12 +1,5 @@
 //require("./tagModelImporter").import("./models/kid.txt");
 
-// Services that we expose
-require("./tagsService");
-require("./tagModelService");
-
-
-
-
-
-
-
+// APIs that we expose
+require("./api/classify");
+require("./api/train");

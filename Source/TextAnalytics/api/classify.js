@@ -1,8 +1,8 @@
-let app = require("./app");
-let models = require("./models");
-let languages = require("./languages")
+let app = require("../app");
+let models = require("../models");
+let languages = require("../languages")
 
-app.post("/tags", (req, res) => {
+app.post("/models/:type/classify", (req, res) => {
     /*
     Expected JSON Payload:
     {
@@ -12,7 +12,7 @@ app.post("/tags", (req, res) => {
     */
 
     let lang = languages.detect(req.body.text);
-    models.getFor(req.body.key, "tags", lang).then(model => {
+    models.getFor(req.body.key, req.params.type, lang).then(model => {
         let result = model.getClassificationsFor(req.body.text);
         res.status(200).json(result);
     });
